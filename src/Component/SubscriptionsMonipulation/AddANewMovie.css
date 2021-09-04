@@ -1,0 +1,43 @@
+.main-add-a-movie{
+    background: rgb(131,58,180);
+    background: linear-gradient(270deg, rgb(153, 128, 170) 0%, rgba(255,231,46,0.9363095580028886) 46%, rgba(252,176,69,1) 100%);
+    border-radius: 5px;
+    padding: 5px;
+}
+.add-the-movie-btn{
+    padding: 3px;
+    margin: 3px;
+    position: relative;
+    font-size: 15px;
+    width: 140px;
+    height: 25px;
+    border-radius: 25px;
+    background-color:   #959df0;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    color: black;
+    border:1px solid #052e53 ;
+}
+.add-the-movie-btn:hover {
+    background-color:#052e53;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    color: white;
+    border: none;
+
+} 
+.input-date-btn{
+    border: none;
+    background: transparent;
+    width: 400px;
+    border-bottom:2px solid rgb(61, 4, 61);
+    font-weight: bold;
+}
+.input-date-btn:hover {
+    border-bottom: 2px solid white;
+} 
+.input-date-btn:focus{
+    outline: none;
+}
+.input-a-movie-data{
+    color: purple;
+    font-size: 10px;
+}

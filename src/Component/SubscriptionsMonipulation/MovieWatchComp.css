@@ -1,0 +1,34 @@
+.main-movie-watch{
+    text-align: center;
+    color: black;
+    position: relative;
+    min-height: 45px;
+    background-color: white;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, .15);
+    padding-bottom: 13px;
+}
+.btn-subscribe-to-movie{
+    position: relative;
+    font-size: 15px;
+    width: 140px;
+    height: 25px;
+    padding: 3px;
+    margin: 3px;
+    border-radius: 25px;
+    background-color:   #959df0;
+    color: black;
+    border:1px solid #052e53 ;
+}
+.btn-subscribe-to-movie:hover {
+    background-color:#052e53;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    color: white;
+    border: none;
+
+}
+.movie-watch-list{
+    font-size: 13.5px;
+    text-align: left;
+    border: 3px solid transparent; 
+} 

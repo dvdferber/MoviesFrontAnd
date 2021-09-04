@@ -1,0 +1,71 @@
+.movies-main-host{
+    position: relative;
+    top: 25px;
+    background-color: transparent;
+}
+.host-menu-btn{
+    width: 25%;
+    position: relative;
+    left: 40%;
+    margin-bottom: 10px;
+}
+.rendering-all-the-movies{
+    left: 13%;
+    position: relative;
+    width: 75%;
+    top: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 280px);
+    grid-auto-rows: auto;
+    background-color: transparent;
+}
+
+
+
+/* search disine  element */
+
+
+
+
+
+.search-main-item{
+    position: relative;
+    border: 2px solid purple;
+    background: rgb(63,94,251);
+    background: linear-gradient(90deg, rgba(63,94,251,1) 0%, rgba(15,4,143,0.7346288857339811) 100%, rgba(84,70,252,0.6225840678068102) 100%);  
+    border-radius: 25px;
+    width: 35%;
+    height: 35px;
+    left: 32%;
+}
+.search-input{
+    left: 5%;
+    width: 80%;
+    top: 3px;
+    background-color: transparent;
+    position: relative;
+    height: 25px;
+    border: none;
+    color: black;
+    font-weight: 25px;
+    font-size: large;
+}
+.search-input:focus {
+    outline: none;
+  }
+.search-btn{
+    position: relative;
+    float: right;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    border: none;
+}
+.search-btn:hover{
+    border: 3px solid blueviolet;
+}
+.search-input::placeholder {
+    color: rgba(226, 231, 255, 0.459);
+    font-size: 15px;
+    font-weight: 1px;
+}

@@ -1,0 +1,70 @@
+.logInPage{
+    /* margin:0 auto; */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background: rgb(63,94,251);
+background: linear-gradient(90deg, rgba(63,94,251,1) 0%, rgba(15,4,143,0.7346288857339811) 100%, rgba(84,70,252,0.6225840678068102) 100%);
+    color: rgb(31, 21, 21);
+    border: none;
+    border-radius: 10px;
+    width: 300px;
+    height: 400px;
+    padding: 5px;
+    top: 40%;
+    left: 50%;
+    position: absolute;
+    margin: -100px 0 0 -150px;
+    text-align: center;
+}
+.btn-login{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: relative;
+    padding: 4px;
+    margin-top: 15px;
+    border: none;
+    background-color:#052e53;
+    color: #b9bbd1;
+    font-size: 15px;
+    top: 12px;
+    width: 90px;
+    height: 30px;
+    border-radius: 25px;
+}
+.btn-login:hover {
+    background-color:#052e53;
+    color: #b9bbd1;
+    border: 1px solid white;
+  } 
+.create-account{
+    position: relative;
+    color: cornsilk;
+    top: 20px;
+}
+.input-filds{
+    color:  #03172b;
+    font-size: 18px;
+    background-color: transparent;
+}
+.log-in-input:hover{
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid  white;
+}
+.log-in-input:focus {
+    outline: none;
+}
+.log-in-input{
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #03172b;
+    color: rgb(255, 255, 255);
+   
+}
+::placeholder {
+    color: rgba(255, 255, 255, 0.726);
+    opacity: 1;
+}
+.header-log-in{
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    font-size: xx-large;
+    
+}

@@ -1,0 +1,42 @@
+.main-member-div{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* background-color: rgb(100, 100, 255); */
+    background: rgb(63,94,251);
+    background: linear-gradient(90deg, rgba(63,94,251,1) 0%, rgba(15,4,143,0.7346288857339811) 100%, rgba(84,70,252,0.6225840678068102) 100%);
+    color: hsl(240, 2%, 22%);
+    border: none;
+    border-radius: 10px;
+    width: 500px;
+    left: 33%;
+    position: relative;
+    margin: 20px;
+    padding: 10px;
+    padding-top: 15px;
+}
+
+.mebers-battons{
+    position: relative;
+    margin-bottom: 10px;
+    right: -25px;
+}
+.member-edit-btn{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    position: relative;
+    padding: 4px;
+    margin-top: 15px;
+    border: none;
+    background-color:#052e53;
+    color: white;
+    font-size: 15px;
+    width: 90px;
+    height: 30px;
+    border-radius: 25px;
+    left: 55%;
+}
+.member-edit-btn:hover {
+    background-color:   #959df0;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    color: black;
+
+} 
