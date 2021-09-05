@@ -1,8 +1,8 @@
 const DAL = require('./DAL')
 
-const membersURl = 'http://localhost:7000/api/members'
-const subscriptionURl = 'http://localhost:7000/api/subscription'
-const movieURl = 'http://localhost:7000/api/movies'
+const membersURl = 'https://server-side-cinema.herokuapp.com/api/members'
+const subscriptionURl = 'https://server-side-cinema.herokuapp.com/api/subscription'
+const movieURl = 'https://server-side-cinema.herokuapp.com/api/movies'
 
 
 export const getAllMembers = async()=>{

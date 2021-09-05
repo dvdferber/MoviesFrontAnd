@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {addMemberToMovie} from '../Data/DataForMembers'
-import DAL from '../Data/DAL'
+import {getAll} from '../Data/DAL'
 import './AddANewMovie.css'
 
 
@@ -12,13 +12,13 @@ const AddANewMovie = (props) =>{
     const [datemge, setDateMge]= useState('')
     const [isValidDate, setIsValidDate] = useState(true)
 
-    const movieURl = 'http://localhost:7000/api/movies'
+    const movieURl = 'https://server-side-cinema.herokuapp.com/api/movies'
 
     useEffect(()=>{
         let unmounted = true
         const onLode= async()=> {
             unmounted && setMemberId(props.memberId)
-            let allMoviesData = await DAL.getAll(movieURl)
+            let allMoviesData = await getAll(movieURl)
             let shapeMovie = allMoviesData.filter(movie => !props.ids.includes(movie._id))
             unmounted && setMovieList(shapeMovie)
             // get default movie if user didnt select (the first movie to see)

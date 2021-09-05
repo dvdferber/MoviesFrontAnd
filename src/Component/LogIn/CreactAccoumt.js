@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import DAL from '../Data/DAL'
+import {getAll, updateExsist} from '../Data/DAL'
 import { useHistory } from 'react-router-dom'
 import './createAccount.css'
 
@@ -16,15 +16,15 @@ const CreactAccount = () =>{
     },[newUser])
 
     const createAccount = async() =>{
-        const URl = `http://localhost:7000/api/users`
+        const URl = `https://server-side-cinema.herokuapp.com/api/users`
 
         if(newUser.password.length > 5){
-            let allusers = await DAL.getAll(URl)
+            let allusers = await getAll(URl)
 
             allusers.forEach(async(user) => {
                 if((user.userName === newUser.userName && user.password === null) || 
                 (user.userName === newUser.userName && user.password === undefined)){
-                   let respond = await DAL.updateExsist(user._id, URl, {...newUser})
+                   let respond = await updateExsist(user._id, URl, {...newUser})
                    if(respond.password === newUser.password){
                         setToShow(false)
                         history.push('/')

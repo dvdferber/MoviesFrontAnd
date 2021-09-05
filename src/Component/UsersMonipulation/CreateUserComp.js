@@ -1,13 +1,13 @@
 import React, { useState} from 'react'
 import { useHistory } from 'react-router-dom'
 import {connvertPremissionObjToArray, isUserAlreadyExsist} from '../Data/Utils'
-import DAL from '../Data/DAL'
+import {createNew} from '../Data/DAL'
 import './EditUser.css'
 
 
-const usersJsonURl = 'http://localhost:7000/json/users/'
-const usersDBurl = 'http://localhost:7000/api/users/'
-const premissionURl = 'http://localhost:7000/json/premission'
+const usersJsonURl = 'https://server-side-cinema.herokuapp.com/json/users/'
+const usersDBurl = 'https://server-side-cinema.herokuapp.com/api/users/'
+const premissionURl = 'https://server-side-cinema.herokuapp.com/json/premission'
 
 const CreateUserComp = (props) =>{
     const history = useHistory()
@@ -51,10 +51,10 @@ const CreateUserComp = (props) =>{
     const SaveAllChanges = async() =>{
         let isExsist = await isUserAlreadyExsist(userToEdit.userName)
         if(isExsist && !isUserNameToSort && userToEdit.userName){
-            let userDBresp = await DAL.createNew(usersDBurl, {...userToEdit})
-            await DAL.createNew(usersJsonURl, {...user,id: userDBresp._id, createdDate: new Date()})
+            let userDBresp = await createNew(usersDBurl, {...userToEdit})
+            await createNew(usersJsonURl, {...user,id: userDBresp._id, createdDate: new Date()})
             let premissionTemp = connvertPremissionObjToArray(userPremission)
-            await DAL.createNew(premissionURl, {id: userDBresp._id, permissions:[...premissionTemp]})
+            await createNew(premissionURl, {id: userDBresp._id, permissions:[...premissionTemp]})
             history.push('/main/users/')
         }
         else if(!isExsist){

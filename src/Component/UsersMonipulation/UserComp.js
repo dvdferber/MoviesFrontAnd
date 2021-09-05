@@ -1,12 +1,12 @@
 import { useEffect, useState, } from 'react'
-import DAL from '../Data/DAL'
+import {deleteObj} from '../Data/DAL'
 import { useHistory } from 'react-router-dom'
 import './Users.css'
 
 
-const usersJsonURl = 'http://localhost:7000/json/users/'
-const usersDBurl = 'http://localhost:7000/api/users/'
-const premissionURl = 'http://localhost:7000/json/premission'
+const usersJsonURl = 'https://server-side-cinema.herokuapp.com/json/users/'
+const usersDBurl = 'https://server-side-cinema.herokuapp.com/api/users/'
+const premissionURl = 'https://server-side-cinema.herokuapp.com/json/premission'
 
 
 const UserComp = (props) =>{
@@ -19,9 +19,9 @@ const UserComp = (props) =>{
 
     const deleteUser = async() =>{
         let userID = user.id
-        await DAL.deleteObj(userID, usersJsonURl)
-        await DAL.deleteObj(userID, premissionURl)
-        await DAL.deleteObj(userID, usersDBurl)
+        await deleteObj(userID, usersJsonURl)
+        await deleteObj(userID, premissionURl)
+        await deleteObj(userID, usersDBurl)
             props.trigger()
     }
     const goToEditUser = () =>{

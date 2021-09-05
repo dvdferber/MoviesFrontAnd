@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import DAL from '../Data/DAL'
+import {createNew} from '../Data/DAL'
 import './EditMemberComp'
 
-const membersURl = 'http://localhost:7000/api/members'
+const membersURl = 'https://server-side-cinema.herokuapp.com/api/members'
 
 const CreateMemberComp = () =>{
     const history = useHistory()
@@ -22,7 +22,7 @@ const CreateMemberComp = () =>{
 
     const addMember =async()=>{
         if(newMember.name !== '' &&  !isNameToSort){
-            let resp = await DAL.createNew(membersURl, {...newMember})
+            let resp = await createNew(membersURl, {...newMember})
             if(resp){
                 history.push('/main/subscriptions')
             }

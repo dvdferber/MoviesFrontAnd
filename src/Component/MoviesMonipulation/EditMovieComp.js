@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
-import DAL from '../Data/DAL'
+import {updateExsist} from '../Data/DAL'
 import './EditAndCreatMovie.css'
 
 const EditMovieComp = (props) =>{
@@ -19,8 +19,8 @@ const EditMovieComp = (props) =>{
     const SaveEdit = async() =>{
         if((newMovie.premiered !== null && newMovie.premiered !== undefined && newMovie.premiered !== '') && 
         (newMovie.name !== null && newMovie.name !== undefined && newMovie.name !== '') ){
-            const moviesURl = 'http://localhost:7000/api/movies'
-            let resp = await DAL.updateExsist(newMovie.id, moviesURl, {...newMovie, genres: newMovie.genres.split(',')} )
+            const moviesURl = 'https://server-side-cinema.herokuapp.com/api/movies'
+            let resp = await updateExsist(newMovie.id, moviesURl, {...newMovie, genres: newMovie.genres.split(',')} )
             if(resp){
                 if(location.url === '/main/movies/all' || location.url === '/main/movies'){
                     history.push(`/main/movies/all`)

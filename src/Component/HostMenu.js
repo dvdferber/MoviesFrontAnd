@@ -10,21 +10,23 @@ import './style.css'
 
 const MenuComp = (props) =>{
     const location = useLocation()
-    const [allUserInfo, setAllUserInfo] = useState({premissions:{Admin: false}})
+    const [allUserInfo, setAllUserInfo] = useState({premissions:{Admin: false, View_Movies: false, View_Subscriptions:false }})
     const [hendelTimeOut, setHendelTimeOut] = useState()
 
     useEffect(()=>{
         let unmounted = false;
         const getData = async() =>{
-
             let data = await userDataWithBooleanPremissionById(location.id)
+            if(data.premissions === undefined){
+                data.premissions = {Admin: false, View_Movies: false, View_Subscriptions:false};
+            }
             setAllUserInfo(data)
             localStorage.setItem('allUserInfo', JSON.stringify(data))
             let timeOut = setTimeout(() => {
                 alert('Is time to log out')
                 props.history.push('/')
                 localStorage.clear()
-            }, data.sessionTimeOut * 60000)
+            }, 10 + data.sessionTimeOut * 60000)
             setHendelTimeOut(timeOut)
         }
         if(!unmounted && location.id !== undefined){

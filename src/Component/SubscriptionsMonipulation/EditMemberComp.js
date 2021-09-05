@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
-import DAL from '../Data/DAL'
+import {updateExsist} from '../Data/DAL'
 import './EditAndCreate.css'
 
-const membersURl = 'http://localhost:7000/api/members'
+const membersURl = 'https://server-side-cinema.herokuapp.com/api/members'
 
 const EditMemberComp = () =>{
     const location = useLocation()
@@ -22,7 +22,7 @@ const EditMemberComp = () =>{
 
 
     const saveMember =async()=>{
-        let resp = await DAL.updateExsist(memberToEdit._id, membersURl, memberToEdit)
+        let resp = await updateExsist(memberToEdit._id, membersURl, memberToEdit)
         if(resp){
             history.push('/main/subscriptions')
         }

@@ -1,14 +1,14 @@
-import DAL from './DAL'
+import {getAll, getByID, deleteObj, updateExsist} from './DAL'
 
-const membersURl = 'http://localhost:7000/api/members'
-const moviesURl = 'http://localhost:7000/api/movies'
-const subscriptionURl = 'http://localhost:7000/api/subscription'
+const membersURl = 'https://server-side-cinema.herokuapp.com/api/members'
+const moviesURl = 'https://server-side-cinema.herokuapp.com/api/movies'
+const subscriptionURl = 'https://server-side-cinema.herokuapp.com/api/subscription'
 
 export const getAllData = async() =>{
 
-    const membersData = await DAL.getAll(membersURl)
-    const moviesData = await DAL.getAll(moviesURl)
-    const subscriptionData = await DAL.getAll(subscriptionURl)
+    const membersData = await getAll(membersURl)
+    const moviesData = await getAll(moviesURl)
+    const subscriptionData = await getAll(subscriptionURl)
 
     let clearMovieData = []
     moviesData.forEach(movie => {
@@ -26,9 +26,9 @@ export const getAllData = async() =>{
     return clearMovieData
 }
 export const getMoviesById = async(id) => {
-    const membersData = await DAL.getAll(membersURl)
-    const moviesData = await DAL.getByID(id, moviesURl)
-    const subscriptionData = await DAL.getAll(subscriptionURl)
+    const membersData = await getAll(membersURl)
+    const moviesData = await getByID(id, moviesURl)
+    const subscriptionData = await getAll(subscriptionURl)
 
         let subscriptionsWatch = getNameAndDataBYMovieId(subscriptionData, membersData,  id)
         let clearMovieObj = {
@@ -59,12 +59,12 @@ const getNameAndDataBYMovieId = (subscrptions, members,  movieId) =>{
     return dataToReturn
 }
 export const deleteMovie = async(movieId) =>{
-    let respFromMovies = await DAL.deleteObj(movieId, moviesURl)
-    let subscriptionToUpdate = await DAL.getAll(subscriptionURl)
+    let respFromMovies = await deleteObj(movieId, moviesURl)
+    let subscriptionToUpdate = await getAll(subscriptionURl)
     subscriptionToUpdate.forEach(async(sub) => {
         let newMoviesArr = sub.movies.filter(movie => movie.movieId !== movieId)
         sub.movies = newMoviesArr
-        await DAL.updateExsist(sub._id, subscriptionURl, {...sub})
+        await updateExsist(sub._id, subscriptionURl, {...sub})
     })
     if(respFromMovies){
         return true

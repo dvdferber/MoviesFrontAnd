@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import DAL from '../Data/DAL'
+import {createNew} from '../Data/DAL'
 import './EditAndCreatMovie.css'
 
 const CreateMovieComp = (props) =>{
@@ -12,9 +12,9 @@ const CreateMovieComp = (props) =>{
     const Save = async() =>{
         if((newMovie.premiered !== null && newMovie.premiered !== undefined && newMovie.premiered !== '') && 
         (newMovie.name !== null && newMovie.name !== undefined && newMovie.name !== '') ){
-            const moviesURl = 'http://localhost:7000/api/movies'
+            const moviesURl = 'https://server-side-cinema.herokuapp.com/api/movies'
             let genres = (newMovie.genres) ? newMovie.genres.split(',') : '';
-            let resp = await DAL.createNew(moviesURl, {...newMovie, genres: genres} )
+            let resp = await createNew(moviesURl, {...newMovie, genres: genres} )
             if(resp){
                 history.push('/main/movies/all')
             }

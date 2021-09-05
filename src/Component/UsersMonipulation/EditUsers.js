@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import { useLocation, useHistory } from 'react-router-dom'
 import {connvertPremissionObjToArray, getObjPremissionFronArray, isUserAlreadyExsist} from '../Data/Utils'
-import DAL from '../Data/DAL'
+import {updateExsist} from '../Data/DAL'
 import './EditUser.css'
 
 
-const usersJsonURl = 'http://localhost:7000/json/users/'
-const usersDBurl = 'http://localhost:7000/api/users/'
-const premissionURl = 'http://localhost:7000/json/premission'
+const usersJsonURl = 'https://server-side-cinema.herokuapp.com/json/users/'
+const usersDBurl = 'https://server-side-cinema.herokuapp.com/api/users/'
+const premissionURl = 'https://server-side-cinema.herokuapp.com/json/premission'
 
 const EditUserComp = (props) =>{
     const location = useLocation()
@@ -66,10 +66,10 @@ const EditUserComp = (props) =>{
             let personToSend = {...user}
             delete personToSend.permissions
             delete personToSend.userName
-            let userResp = await DAL.updateExsist(user.id, usersDBurl, {...userToEdit})
-            let jsonUserResp = await DAL.updateExsist(user.id, usersJsonURl, {...personToSend})
+            let userResp = await updateExsist(user.id, usersDBurl, {...userToEdit})
+            let jsonUserResp = await updateExsist(user.id, usersJsonURl, {...personToSend})
             let premissionTemp = connvertPremissionObjToArray(userPremission)
-            premissionTemp = await DAL.updateExsist(user.id, premissionURl, {id:user.id, permissions: [...premissionTemp]})
+            premissionTemp = await updateExsist(user.id, premissionURl, {id:user.id, permissions: [...premissionTemp]})
             if(userResp || jsonUserResp || premissionTemp){
                 history.push('/main/users')
             }

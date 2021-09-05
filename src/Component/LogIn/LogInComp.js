@@ -20,7 +20,7 @@ const LogInComp = (props) => {
 
     const chackIfMatch = async() =>{
         if(user.userName !== '' && user.password !== ''){
-            const UPURl = `http://localhost:7000/api/users/login/${user.userName}/${user.password}`
+            const UPURl = `https://server-side-cinema.herokuapp.com/api/users/login/${user.userName}/${user.password}`
             let isId = await axios.get(UPURl)
             if(isId.data){
                 props.history.push({

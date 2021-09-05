@@ -1,14 +1,14 @@
-import DAL from './DAL'
+import {getAll, getByID} from './DAL'
 
 
-const jsonPremissionURl = `http://localhost:7000/json/premission`
-const jsonUserURl = `http://localhost:7000/json/users`;
-const usersFromDbURl = 'http://localhost:7000/api/users'
+const jsonPremissionURl = `https://server-side-cinema.herokuapp.com/json/premission`
+const jsonUserURl = `https://server-side-cinema.herokuapp.com/json/users`;
+const usersFromDbURl = 'https://server-side-cinema.herokuapp.com/api/users'
 
 export async function clearUserData(){
-    const usersJsonData = await DAL.getAll(jsonUserURl)
-    const premissions = await DAL.getAll(jsonPremissionURl)
-    const usersDbData = await DAL.getAll(usersFromDbURl)
+    const usersJsonData = await getAll(jsonUserURl)
+    const premissions = await getAll(jsonPremissionURl)
+    const usersDbData = await getAll(usersFromDbURl)
 
     let clearUsers = usersDbData.map(user => {
         let person = getPersonDataById(usersJsonData, user._id);
@@ -31,7 +31,7 @@ export async function clearUserData(){
 }
 
 export async function isUserAlreadyExsist(NewuserName, originalUserName){
-    const allUser = await DAL.getAll(usersFromDbURl)
+    const allUser = await getAll(usersFromDbURl)
     let searchUser = allUser.filter(user => {
         return user.userName === NewuserName && user.userName !== originalUserName})
     if(searchUser.length === 0){
@@ -42,9 +42,9 @@ export async function isUserAlreadyExsist(NewuserName, originalUserName){
 }
 
 export async function userDataWithBooleanPremissionById(id){
-    const usersJsonData = await DAL.getByID(id, jsonUserURl)
-    const premissions = await DAL.getByID(id, jsonPremissionURl)
-    const usersDbData = await DAL.getByID(id, usersFromDbURl)
+    const usersJsonData = await getByID(id, jsonUserURl)
+    const premissions = await getByID(id, jsonPremissionURl)
+    const usersDbData = await getByID(id, usersFromDbURl)
     delete usersJsonData.id
     delete premissions.id
     let premissionObj =  getObjPremissionFronArray(premissions.permissions)
