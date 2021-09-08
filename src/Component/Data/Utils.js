@@ -16,6 +16,9 @@ export async function clearUserData(){
         if(person === undefined){
             person = {firstName : '', lastName: '' , createdDate: '', sessionTimeOut: 0}
         }
+        if(premission === undefined){
+            premission.permissions = []
+        }
         let userObj = {
             id: user._id,
             firstName: person.firstName ,
@@ -23,7 +26,7 @@ export async function clearUserData(){
             createdDate: person.createdDate ,
             sessionTimeOut: person.sessionTimeOut ,
             userName: user.userName,
-            permissions: premission.permissions ? premission.permissions: []
+            permissions: premission.permissions
         }
         return userObj
     })
