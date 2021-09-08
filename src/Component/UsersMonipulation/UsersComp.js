@@ -10,13 +10,14 @@ const UsresComp = (props) =>{
 
     useEffect(()=>{
         let unmonted = false
-        const getData = async()=>{
-            let data =  await clearUserData()// function in utils file
-            let anlySimpleUsers = data.filter(user => !user.permissions.includes('Admin'))
-            setUsers(anlySimpleUsers)
+        const getPromiseData = ()=>{
+            const data = clearUserData()
+            data.then(data => {
+                setUsers(data)
+            })
         }
         if(!unmonted){
-            userPremission.premissions.Admin && getData()
+            userPremission.premissions.Admin && getPromiseData() //getData()
         }
         return ()=>{
             unmonted = true

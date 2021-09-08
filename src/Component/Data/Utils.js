@@ -13,24 +13,23 @@ export async function clearUserData(){
     let clearUsers = usersDbData.map(user => {
         let person = getPersonDataById(usersJsonData, user._id);
         let premission = getUserPremissionById(premissions, user._id)
-        if(person === undefined){
-            person = {firstName : '', lastName: '' , createdDate: '', sessionTimeOut: 0}
+
+        if(premission !== undefined && person !== undefined){
+            let userObj = {
+                id: user._id,
+                firstName: person.firstName ,
+                lastName: person.lastName ,
+                createdDate: person.createdDate ,
+                sessionTimeOut: person.sessionTimeOut ,
+                userName: user.userName,
+                permissions: premission.permissions
+            }
+            return userObj
+        }else{
+            return {id: 0}
         }
-        if(premission === undefined){
-            premission.permissions = []
-        }
-        let userObj = {
-            id: user._id,
-            firstName: person.firstName ,
-            lastName: person.lastName ,
-            createdDate: person.createdDate ,
-            sessionTimeOut: person.sessionTimeOut ,
-            userName: user.userName,
-            permissions: premission.permissions
-        }
-        return userObj
     })
-    return clearUsers
+    return clearUsers.filter(user => user.id !== 0)
 }
 
 export async function isUserAlreadyExsist(NewuserName, originalUserName){

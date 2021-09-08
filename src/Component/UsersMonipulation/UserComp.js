@@ -47,8 +47,8 @@ const UserComp = (props) =>{
             </ul>
         </div>
         <div className='user-btn-area'>
-            <input className='user-btn' type='button' value='Edit' onClick={goToEditUser}/><span>&nbsp;&nbsp;</span>
-            <input className='user-btn' type='button' value='Delete' onClick={deleteUser}/>
+            <input className='user-btn' disabled={user.permissions.includes('Admin')} type='button' value='Edit' onClick={goToEditUser}/><span>&nbsp;&nbsp;</span>
+            <input className='user-btn' disabled={user.permissions.includes('Admin')} type='button' value='Delete' onClick={deleteUser}/>
         </div>
     </div>)
 }
